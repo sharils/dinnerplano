@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<form>
+  <label
+    htmlFor="email"
+  >
+    Email: 
+    <input
+      id="email"
+      onChange={[Function]}
+      type="email"
+      value="alice@example.com"
+    />
+  </label>
+  <label
+    htmlFor="password"
+  >
+    Password: 
+    <input
+      id="password"
+      onChange={[Function]}
+      type="password"
+      value="alice's password"
+    />
+  </label>
+  <button
+    type="submit"
+  >
+    Login
+  </button>
+</form>
+`;
