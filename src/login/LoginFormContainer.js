@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import LoginForm from "./LoginForm";
 import { getLoginEmail, setLoginEmail } from "./loginEmail";
 import { getLoginPassword, setLoginPassword } from "./loginPassword";
 
-const mapStateToProps = state => ({
-  loginEmail: getLoginEmail(state),
-  loginPassword: getLoginPassword(state)
+const mapStateToProps = createStructuredSelector({
+  loginEmail: getLoginEmail,
+  loginPassword: getLoginPassword
 });
 
 const mapDispatchToProps = {
