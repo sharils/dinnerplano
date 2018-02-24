@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import pipeValue from "../util/pipeValue";
 import LoginForm from "./LoginForm";
 import { getLoginEmail, setLoginEmail } from "./loginEmail";
 import { getLoginPassword, setLoginPassword } from "./loginPassword";
@@ -10,8 +11,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
-  setLoginEmail: e => setLoginEmail(e.target.value),
-  setLoginPassword: e => setLoginPassword(e.target.value)
+  setLoginEmail: pipeValue(setLoginEmail),
+  setLoginPassword: pipeValue(setLoginPassword)
 };
 
 const mergeProps = ({ loginEmail, loginPassword }, dispatchProps) => ({
