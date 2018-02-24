@@ -1,17 +1,9 @@
+import { createAction, handleAction } from "redux-actions";
+
 const SET = "dinnerplano/loginPassword/SET";
 
 export const getLoginPassword = state => state.loginPassword;
 
-export const setLoginPassword = payload => ({
-  type: SET,
-  payload
-});
+export const setLoginPassword = createAction(SET);
 
-export default (state = "", { type, payload }) => {
-  switch (type) {
-    case SET:
-      return payload;
-    default:
-      return state;
-  }
-};
+export default handleAction(SET, (state, { payload }) => payload, "");
