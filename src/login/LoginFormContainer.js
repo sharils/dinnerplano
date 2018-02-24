@@ -10,17 +10,17 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
-  setLoginEmail,
-  setLoginPassword
+  setLoginEmail: e => setLoginEmail(e.target.value),
+  setLoginPassword: e => setLoginPassword(e.target.value)
 };
 
 const mergeProps = ({ loginEmail, loginPassword }, dispatchProps) => ({
   email: {
-    onChange: e => dispatchProps.setLoginEmail(e.target.value),
+    onChange: dispatchProps.setLoginEmail,
     value: loginEmail
   },
   password: {
-    onChange: e => dispatchProps.setLoginPassword(e.target.value),
+    onChange: dispatchProps.setLoginPassword,
     value: loginPassword
   }
 });
