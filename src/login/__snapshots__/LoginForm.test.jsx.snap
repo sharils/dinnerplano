@@ -1,27 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<form>
+<form
+  onSubmit={[Function]}
+>
   <label
     htmlFor="email"
   >
     Email: 
     <input
       id="email"
+      name="email"
+      onBlur={[Function]}
       onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
       type="email"
-      value="alice@example.com"
+      value=""
     />
   </label>
   <label
     htmlFor="password"
   >
-    Password: 
+    Password:
+     
     <input
       id="password"
+      name="password"
+      onBlur={[Function]}
       onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
       type="password"
-      value="alice's password"
+      value=""
     />
   </label>
   <button

@@ -1,21 +1,14 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import Provizanto from "../../test/util/Provizanto";
 import LoginForm from "./LoginForm";
-
-const getInputProps = ({ onChange = () => {}, value = "" } = {}) => ({
-  onChange,
-  value
-});
 
 it("renders correctly", () => {
   const tree = renderer
     .create(
-      <LoginForm
-        email={getInputProps({ value: "alice@example.com" })}
-        password={getInputProps({ value: "alice's password" })}
-      >
-        Facebook
-      </LoginForm>
+      <Provizanto>
+        <LoginForm onSubmit={() => {}}>Facebook</LoginForm>
+      </Provizanto>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

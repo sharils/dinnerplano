@@ -1,26 +1,27 @@
-import PropTypes from "prop-types";
 import React from "react";
+import { Field, propTypes, reduxForm } from "redux-form";
 
-export default function LoginForm({ email, password }) {
+function LoginForm({ handleSubmit }) {
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="email">
-        Email: <input type="email" id="email" {...email} />
+        Email: <Field name="email" component="input" type="email" id="email" />
       </label>
       <label htmlFor="password">
-        Password: <input type="password" id="password" {...password} />
+        Password:{" "}
+        <Field
+          name="password"
+          component="input"
+          type="password"
+          id="password"
+        />
       </label>
       <button type="submit">Login</button>
     </form>
   );
 }
-LoginForm.propTypes = {
-  email: PropTypes.shape({
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired
-  }).isRequired,
-  password: PropTypes.shape({
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired
-  }).isRequired
-};
+LoginForm.propTypes = propTypes;
+
+export default reduxForm({
+  form: "LoginForm"
+})(LoginForm);

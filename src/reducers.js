@@ -1,8 +1,6 @@
 import { combineReducers } from "redux";
-import loginEmail from "./login/loginEmail";
-import loginPassword from "./login/loginPassword";
+import { reducer as form } from "redux-form";
 
 export default combineReducers({
-  loginEmail,
-  loginPassword
+  form
 });

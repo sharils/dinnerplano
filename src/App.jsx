@@ -4,7 +4,7 @@ import { createStore } from "redux";
 import logo from "./logo.svg";
 import "./App.css";
 import reducers from "./reducers";
-import LoginFormContainer from "./login/LoginFormContainer";
+import LoginForm from "./login/LoginForm";
 
 const store = createStore(
   reducers,
@@ -20,7 +20,7 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <LoginFormContainer />
+        <LoginForm onSubmit={() => {}} />
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
