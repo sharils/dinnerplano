@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import StoreProvider from "./StoreProvider";
-import LoginForm from "./login/LoginForm";
+import LoginFormContainer from "./login/LoginFormContainer";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <LoginForm onSubmit={() => {}} />
+        <LoginFormContainer />
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
