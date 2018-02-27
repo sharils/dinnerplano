@@ -9,3 +9,6 @@ export const rfBindActionCreators = (actionCreators, dispatch) =>
 
 export const rfCreateAction = actionType =>
   createAction(actionType, ({ payload }) => payload, ({ meta }) => meta);
+
+export const rfGetSubmitDisabled = props =>
+  !props.anyTouched || props.pristine || props.submitting;

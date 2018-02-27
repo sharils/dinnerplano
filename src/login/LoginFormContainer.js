@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import LoginForm from "./LoginForm";
-import { startLogin } from "./login";
+import { startLogin } from "./userCredentials";
 import { rfBindActionCreators } from "../util/reduxForm";
 
 const mapStateToProps = null;

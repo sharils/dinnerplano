@@ -38,6 +38,7 @@ exports[`renders correctly 1`] = `
     />
   </label>
   <button
+    disabled={true}
     type="submit"
   >
     Login
