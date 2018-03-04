@@ -1,6 +1,6 @@
 import { all } from "redux-saga/effects";
-import { initializeApp } from "./init/firebaseApp";
-import { loginSupervisor } from "./login/userCredentials";
+import { loginSupervisor } from "../login/userCredentials";
+import { initializeApp } from "./firebaseApp";
 
 export default function* sagas() {
   yield all([initializeApp(), loginSupervisor()]);

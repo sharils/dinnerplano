@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import StoreProvider from "./StoreProvider";
+import StoreProvider from "./init/StoreProvider";
 import LoginFormContainer from "./login/LoginFormContainer";
 
 function App() {

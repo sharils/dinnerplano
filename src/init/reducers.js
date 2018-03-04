@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { reducer as form } from "redux-form";
-import firebaseApp from "./init/firebaseApp";
-import userCredentials from "./login/userCredentials";
+import userCredentials from "../login/userCredentials";
+import firebaseApp from "./firebaseApp";
 
 export default combineReducers({
   firebaseApp,
