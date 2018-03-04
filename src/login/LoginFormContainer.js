@@ -1,12 +1,21 @@
+import { path } from "ramda";
 import { connect } from "react-redux";
-import LoginForm from "./LoginForm";
-import { startLogin } from "./userCredentials";
+import { Redirect } from "react-router-dom";
+import { branch, compose, renderComponent, withProps } from "recompose";
+import { createStructuredSelector } from "reselect";
 import { rfBindActionCreators } from "../util/reduxForm";
+import LoginForm from "./LoginForm";
+import { isLoggedIn, startLogin } from "./userCredentials";
 
-const mapStateToProps = null;
-
+const mapStateToProps = createStructuredSelector({
+  isLoggedIn
+});
 const mapDispatchToProps = rfBindActionCreators.bind(null, {
   onSubmit: startLogin
 });
+const redirect = compose(withProps({ to: "/" }), renderComponent(Redirect));
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  branch(path(["isLoggedIn"]), redirect)
+)(LoginForm);

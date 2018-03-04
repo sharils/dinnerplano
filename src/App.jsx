@@ -1,4 +1,5 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 import StoreProvider from "./init/StoreProvider";
@@ -12,7 +13,7 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <LoginFormContainer />
+        <Route path="/login" component={LoginFormContainer} />
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>

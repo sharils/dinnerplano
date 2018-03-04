@@ -8,6 +8,8 @@ import { rfCreateAction } from "../util/reduxForm";
 const START = "dinnerplano/userCredentials/START";
 const END = "dinnerplano/userCredentials/END";
 
+export const isLoggedIn = state => Boolean(state.userCredentials);
+
 export const startLogin = rfCreateAction(START);
 const endLogin = createAction(END);
 
