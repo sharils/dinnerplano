@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
 import createSagaMiddleware from "redux-saga";
@@ -15,7 +16,11 @@ const store = createStore(
 sagaMiddleware.run(sagas);
 
 export default function StoreProvider({ children }) {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <Provider store={store}>
+      <BrowserRouter>{children}</BrowserRouter>
+    </Provider>
+  );
 }
 StoreProvider.propTypes = {
   children: PropTypes.element.isRequired
