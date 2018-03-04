@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
 import createSagaMiddleware from "redux-saga";
-import "./App.css";
 import reducers from "./reducers";
 import sagas from "./sagas";
 
