@@ -20,8 +20,8 @@
     "reselect": "^3.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "REACT_APP_COMMIT_HASH=\"$(git rev-parse HEAD | xxd -r -p | base64)\" react-scripts start",
+    "build": "REACT_APP_COMMIT_HASH=\"$(git rev-parse HEAD | xxd -r -p | base64)\" react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint --ext js,jsx --fix ."
