@@ -20,11 +20,13 @@
     "reselect": "^3.0.1"
   },
   "scripts": {
-    "start": "REACT_APP_COMMIT_HASH=\"$(git rev-parse HEAD | xxd -r -p | base64)\" react-scripts start",
-    "build": "REACT_APP_COMMIT_HASH=\"$(git rev-parse HEAD | xxd -r -p | base64)\" react-scripts build",
+    "start": "REACT_APP_COMMIT_HASH=\"$(npm run -s commit-hash)\" react-scripts start",
+    "build": "REACT_APP_COMMIT_HASH=\"$(npm run -s commit-hash)\" react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext js,jsx --fix ."
+    "lint": "eslint --ext js,jsx --fix .",
+    "commit-hash": "git rev-parse HEAD | xxd -r -p | base64 | tr -d '='",
+    "commit-hash-rev": "base64 -D | xxd -p"
   },
   "devDependencies": {
     "eslint": "^4.18.0",
