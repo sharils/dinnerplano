@@ -1,6 +1,6 @@
-import * as firebase from "firebase";
 import { createAction, handleAction } from "redux-actions";
 import { call, put, select } from "redux-saga/effects";
+import * as firebase from "../firebase";
 
 const SET = "dinnerplano/firebaseApp/SET";
 

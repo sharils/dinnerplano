@@ -1,4 +1,4 @@
-import * as firebase from "firebase";
+import * as firebase from "../firebase";
 
 export const fbIsLoginError = e => {
   if (e instanceof firebase.auth.Error) {
