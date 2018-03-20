@@ -11,12 +11,12 @@ import {
 import { createStructuredSelector } from "reselect";
 import { rfPromisifyOnSubmits } from "../util/reduxForm";
 import LoginForm from "./LoginForm";
-import { isLoggedIn, startLogin } from "./userCredentials";
+import { isLoggedIn, login } from "./userCredentials";
 
 const mapStateToProps = createStructuredSelector({
   isLoggedIn
 });
-const mapDispatchToProps = rfPromisifyOnSubmits({ onSubmit: startLogin });
+const mapDispatchToProps = rfPromisifyOnSubmits({ onSubmit: login });
 const redirect = compose(withProps({ to: "/" }), renderComponent(Redirect));
 
 export default compose(

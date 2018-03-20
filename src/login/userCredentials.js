@@ -1,37 +1,40 @@
-import { createAction, handleAction } from "redux-actions";
+import { createAction, handleActions } from "redux-actions";
 import { SubmissionError } from "redux-form";
-import { call, put, select } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 import { fbIsLoginError } from "../util/firebase";
 import { rfCreateAction } from "../util/reduxForm";
 
 export const LOGIN = "dinnerplano/userCredentials/LOGIN";
-const END = "dinnerplano/userCredentials/END";
+export const LOGOUT = "dinnerplano/userCredentials/LOGOUT";
+const RESET = "dinnerplano/userCredentials/RESET";
+const SET = "dinnerplano/userCredentials/SET";
 
 export const isLoggedIn = state => Boolean(state.userCredentials);
 
-export const startLogin = rfCreateAction(LOGIN);
-const endLogin = createAction(END);
+export const login = rfCreateAction(LOGIN);
+const set = createAction(SET);
+const reset = createAction(RESET);
 
-export default handleAction(endLogin, (state, { payload }) => payload, null);
+const initialState = null;
+export default handleActions(
+  {
+    [RESET]: () => initialState,
+    [SET]: (state, { payload }) => payload
+  },
+  initialState
+);
 
 export function* loginSaga(
   { signInAndRetrieveDataWithEmailAndPassword },
   { payload: { email, password }, meta: [resolve, reject] }
 ) {
-  if (yield select(isLoggedIn)) {
-    const e = new Error("User is already logged in");
-    e.name = "DevelopmentTimeError";
-    resolve();
-    throw e;
-  }
-
   try {
     const userCredentials = yield call(
       signInAndRetrieveDataWithEmailAndPassword,
       email,
       password
     );
-    yield put(endLogin(userCredentials));
+    yield put(set(userCredentials));
     resolve();
   } catch (e) {
     if (fbIsLoginError(e)) {
@@ -41,4 +44,8 @@ export function* loginSaga(
       throw e;
     }
   }
+}
+
+export function* logoutSaga() {
+  yield put(reset());
 }

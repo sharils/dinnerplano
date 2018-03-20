@@ -11,7 +11,7 @@ import { rfCreateAction } from "../util/reduxForm";
 const START = "dinnerplano/userCredentials/START";
 const END = "dinnerplano/userCredentials/END";
 
-export const startLogin = rfCreateAction(START);
+export const login = rfCreateAction(START);
 const endLogin = createAction(END);
 
 export default handleAction(endLogin, (state, { payload }) => payload, null);

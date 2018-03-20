@@ -1,5 +1,5 @@
-import { call, takeLatest } from "redux-saga/effects";
-import { LOGIN, loginSaga } from "../login/userCredentials";
+import { call, take } from "redux-saga/effects";
+import { LOGIN, LOGOUT, loginSaga, logoutSaga } from "../login/userCredentials";
 import * as firebase from "../firebase";
 
 export default function* initializeApp({
@@ -14,10 +14,19 @@ export default function* initializeApp({
     databaseURL,
     storageBucket
   });
-  yield takeLatest(LOGIN, loginSaga, {
-    signInAndRetrieveDataWithEmailAndPassword: [
-      firebaseApp.auth(),
-      "signInAndRetrieveDataWithEmailAndPassword"
-    ]
-  });
+  for (;;) {
+    const action = yield take(LOGIN);
+    yield call(
+      loginSaga,
+      {
+        signInAndRetrieveDataWithEmailAndPassword: [
+          firebaseApp.auth(),
+          "signInAndRetrieveDataWithEmailAndPassword"
+        ]
+      },
+      action
+    );
+    yield take(LOGOUT);
+    yield call(logoutSaga);
+  }
 }
