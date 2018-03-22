@@ -8,20 +8,23 @@ export default function* initializeApp({
   databaseURL = process.env.REACT_APP_FIREBASE_DATABASE_URL,
   storageBucket = process.env.REACT_APP_FIREBASE_STORAGE_BUCKET
 } = {}) {
-  const firebaseApp = yield call([firebase, "initializeApp"], {
+  const app = yield call([firebase, firebase.initializeApp], {
     apiKey,
     authDomain,
     databaseURL,
     storageBucket
   });
+
+  const auth = yield call([app, app.auth]);
+
   for (;;) {
     const action = yield take(LOGIN);
     yield call(
       loginSaga,
       {
         signInAndRetrieveDataWithEmailAndPassword: [
-          firebaseApp.auth(),
-          "signInAndRetrieveDataWithEmailAndPassword"
+          auth,
+          auth.signInAndRetrieveDataWithEmailAndPassword
         ]
       },
       action
