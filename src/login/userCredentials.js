@@ -46,6 +46,8 @@ export function* loginSaga(
   }
 }
 
-export function* logoutSaga() {
+export function* logoutSaga({ signOut }) {
+  // Throw through
+  yield call(signOut);
   yield put(reset());
 }
