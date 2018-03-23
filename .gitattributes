@@ -1,2 +1,4 @@
+.env.development filter=git-crypt diff=git-crypt
+.env.test filter=git-crypt diff=git-crypt
+.env.production filter=git-crypt diff=git-crypt
 .firebaserc filter=git-crypt diff=git-crypt
-.env* filter=git-crypt diff=git-crypt
