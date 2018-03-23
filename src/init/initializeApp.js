@@ -30,6 +30,6 @@ export default function* initializeApp({
       action
     );
     yield take(LOGOUT);
-    yield call(logoutSaga);
+    yield call(logoutSaga, { signOut: [auth, auth.signOut] });
   }
 }

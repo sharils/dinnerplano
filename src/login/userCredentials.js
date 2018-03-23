@@ -47,7 +47,7 @@ export function* loginSaga(
 }
 
 export function* logoutSaga({ signOut }) {
-  // Throw through
+  // Throw No catchthrough
   yield call(signOut);
   yield put(reset());
 }
