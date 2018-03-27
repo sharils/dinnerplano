@@ -10,6 +10,7 @@ const RESET = "dinnerplano/userCredentials/RESET";
 const SET = "dinnerplano/userCredentials/SET";
 
 export const isLoggedIn = state => Boolean(state.userCredentials);
+export const isntLoggedIn = state => !state.userCredentials;
 
 export const login = rfCreateAction(LOGIN);
 const set = createAction(SET);
