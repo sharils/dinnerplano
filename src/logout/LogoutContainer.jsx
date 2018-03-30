@@ -1,17 +1,15 @@
 import { path } from "ramda";
-import { connect } from "react-redux";
-import { compose, setDisplayName } from "recompose";
-import { createStructuredSelector } from "reselect";
+import { compose } from "recompose";
 import redirectHomeIf from "../hoc/redirectHomeIf";
+import connectSelectors from "../hoc/connectSelectors";
 import { isntLoggedIn } from "../login/userCredentials";
 import Logout from "./Logout";
 
-const mapStateToProps = createStructuredSelector({
+const mapStateToProps = {
   isntLoggedIn
-});
+};
 
 export default compose(
-  setDisplayName("LogoutContainer"),
-  connect(mapStateToProps, null),
+  connectSelectors("LogoutContainer", mapStateToProps, null),
   redirectHomeIf(path(["isntLoggedIn"]))
 )(Logout);
