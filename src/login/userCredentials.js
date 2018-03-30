@@ -1,6 +1,8 @@
 import { createAction, handleActions } from "redux-actions";
 import { SubmissionError } from "redux-form";
 import { call, put } from "redux-saga/effects";
+import { createSelector } from "reselect";
+import { not } from "ramda";
 import { fbIsLoginError } from "../util/firebase";
 import { rfCreateAction } from "../util/reduxForm";
 
@@ -9,8 +11,9 @@ export const LOGOUT = "dinnerplano/userCredentials/LOGOUT";
 const RESET = "dinnerplano/userCredentials/RESET";
 const SET = "dinnerplano/userCredentials/SET";
 
-export const isLoggedIn = state => Boolean(state.userCredentials);
-export const isntLoggedIn = state => !state.userCredentials;
+const userCredentialsSelector = state => state.userCredentials;
+export const isLoggedIn = createSelector(userCredentialsSelector, Boolean);
+export const isntLoggedIn = createSelector(userCredentialsSelector, not);
 
 export const login = rfCreateAction(LOGIN);
 const set = createAction(SET);
