@@ -3,7 +3,7 @@ import { compose } from "recompose";
 import redirectHomeIf from "../hoc/redirectHomeIf";
 import connectSelectors from "../hoc/connectSelectors";
 import { isntLoggedIn } from "../login/userCredentials";
-import Logout from "./Logout";
+import LogoutPage from "./LogoutPage";
 
 const mapStateToProps = {
   isntLoggedIn
@@ -12,4 +12,4 @@ const mapStateToProps = {
 export default compose(
   connectSelectors("LogoutContainer", mapStateToProps, null),
   redirectHomeIf(path(["isntLoggedIn"]))
-)(Logout);
+)(LogoutPage);
