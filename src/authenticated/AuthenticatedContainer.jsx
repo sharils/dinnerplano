@@ -1,8 +1,8 @@
 import { path } from "ramda";
-import { compose } from "recompose";
-import redirectHomeIf from "../hoc/redirectHomeIf";
+import { branch, compose, renderComponent } from "recompose";
 import connectSelectors from "../hoc/connectSelectors";
 import { isntLoggedIn } from "../login/userCredentials";
+import LoginFormContainer from "../login/LoginFormContainer";
 import Authenticated from "./Authenticated";
 
 const mapStateToProps = {
@@ -11,5 +11,5 @@ const mapStateToProps = {
 
 export default compose(
   connectSelectors("AuthenticatedContainer", mapStateToProps, null),
-  redirectHomeIf(path(["isntLoggedIn"]))
+  branch(path(["isntLoggedIn"]), renderComponent(LoginFormContainer))
 )(Authenticated);
