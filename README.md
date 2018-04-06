@@ -8,3 +8,5 @@ To decrypt `.firebaserc`, send your GPG key to the maintainer, run `git-crypt un
 Follow [Ducks: Redux Reducer Bundles](https://github.com/erikras/ducks-modular-redux "Ducks: Redux Reducer Bundles").
 
 Follow [Flux Standard Action](https://github.com/acdlite/flux-standard-action "Flux Standard Action").
+
+`mayCall` is used (e.g. login/userCredentials.js) to make it easier to replay dispatched action by copying raw action in the Redux DevTool Extension.
