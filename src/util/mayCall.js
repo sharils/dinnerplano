@@ -1,5 +1,2 @@
-export default (fn, ...args) => {
-  if (typeof fn === "function") {
-    fn.call(null, ...args);
-  }
-};
+export default (fn, ...args) =>
+  typeof fn === "function" ? [true, fn.call(null, ...args)] : [false];

@@ -6,6 +6,7 @@ import { not } from "ramda";
 import { fbIsLoginError } from "../util/firebase";
 import { rfCreateAction } from "../util/reduxForm";
 import mayCall from "../util/mayCall";
+import { debug } from "../util/cslgr";
 
 export const LOGIN = "dinnerplano/userCredentials/LOGIN";
 export const LOGOUT = "dinnerplano/userCredentials/LOGOUT";
@@ -40,12 +41,14 @@ export function* loginSaga(
       password
     );
     yield put(set(userCredentials));
-    yield call(mayCall, resolve);
+    const [called] = yield call(mayCall, resolve);
+    debug("[loginSaga] resolve called %o", called);
   } catch (e) {
     if (fbIsLoginError(e)) {
       reject(new SubmissionError({ _error: e.message }));
     } else {
-      yield call(mayCall, resolve);
+      const [called] = yield call(mayCall, resolve);
+      debug("[loginSaga] resolve called %o", called);
       throw e;
     }
   }
