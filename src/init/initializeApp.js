@@ -1,6 +1,6 @@
+import * as firebase from "firebase";
 import { call, take } from "redux-saga/effects";
 import { LOGIN, LOGOUT, loginSaga, logoutSaga } from "../login/userCredentials";
-import * as firebase from "../firebase";
 
 export default function* initializeApp({
   apiKey = process.env.REACT_APP_FIREBASE_API_KEY,
