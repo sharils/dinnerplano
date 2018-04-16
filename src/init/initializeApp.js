@@ -2,6 +2,11 @@ import * as firebase from "firebase";
 import { call, take } from "redux-saga/effects";
 import { LOGIN, LOGOUT, loginSaga, logoutSaga } from "../login/userCredentials";
 
+function* handOver(actionType, ...args) {
+  const action = yield take(actionType);
+  yield call(...args, action);
+}
+
 export default function* initializeApp({
   apiKey = process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -18,18 +23,12 @@ export default function* initializeApp({
   const auth = yield call([app, app.auth]);
 
   for (;;) {
-    const action = yield take(LOGIN);
-    yield call(
-      loginSaga,
-      {
-        signInAndRetrieveDataWithEmailAndPassword: [
-          auth,
-          auth.signInAndRetrieveDataWithEmailAndPassword
-        ]
-      },
-      action
-    );
-    yield take(LOGOUT);
-    yield call(logoutSaga, { signOut: [auth, auth.signOut] });
+    yield call(handOver, LOGIN, loginSaga, {
+      signInAndRetrieveDataWithEmailAndPassword: [
+        auth,
+        auth.signInAndRetrieveDataWithEmailAndPassword
+      ]
+    });
+    yield call(handOver, LOGOUT, logoutSaga, { signOut: [auth, auth.signOut] });
   }
 }

@@ -6,7 +6,7 @@ import { not } from "ramda";
 import { fbIsLoginError } from "../util/firebase";
 import { rfCreateAction } from "../util/reduxForm";
 import mayCall from "../util/mayCall";
-import { debug } from "../util/cslgr";
+import cslgr from "../util/cslgr";
 
 export const LOGIN = "dinnerplano/userCredentials/LOGIN";
 export const LOGOUT = "dinnerplano/userCredentials/LOGOUT";
@@ -42,20 +42,24 @@ export function* loginSaga(
     );
     yield put(set(userCredentials));
     const [called] = yield call(mayCall, resolve);
-    debug("[loginSaga] resolve called %o", called);
+    cslgr.debug("[loginSaga] resolve called %o", called);
   } catch (e) {
     if (fbIsLoginError(e)) {
       reject(new SubmissionError({ _error: e.message }));
     } else {
       const [called] = yield call(mayCall, resolve);
-      debug("[loginSaga] resolve called %o", called);
+      cslgr.debug("[loginSaga] resolve called %o", called);
       throw e;
     }
   }
 }
 
-export function* logoutSaga({ signOut }) {
-  // Throw No catchthrough
-  yield call(signOut);
-  yield put(reset());
+export function* logoutSaga({ signOut }, { meta: [resolve] }) {
+  try {
+    yield call(signOut);
+    yield put(reset());
+  } finally {
+    const [called] = yield call(mayCall, resolve);
+    cslgr.debug("[loginSaga] resolve called %o", called);
+  }
 }
