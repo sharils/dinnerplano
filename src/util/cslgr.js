@@ -83,7 +83,7 @@ export const group = logger(GROUP);
 export const groupCollapsed = logger(GROUP_COLLAPSED);
 export const groupEnd = logger(GROUP_END);
 export const debug = logger(DEBUG);
-export const table = logger(TABLE);
+// table is not implemented because it's undefined when jest is run
 
 export default {
   clear,
@@ -101,6 +101,5 @@ export default {
   group,
   groupCollapsed,
   groupEnd,
-  debug,
-  table
+  debug
 };
