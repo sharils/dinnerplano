@@ -5,11 +5,11 @@ import connectSelectors from "../hoc/connectSelectors";
 import { isntLoggedIn } from "../login/userCredentials";
 import LogoutPage from "./LogoutPage";
 
-const mapStateToProps = {
+const mapSelectorToProps = {
   isntLoggedIn
 };
 
 export default compose(
-  connectSelectors("LogoutContainer", mapStateToProps, null),
+  connectSelectors("LogoutContainer", mapSelectorToProps, null),
   redirectHomeIf(path(["isntLoggedIn"]))
 )(LogoutPage);

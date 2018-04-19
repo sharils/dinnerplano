@@ -5,11 +5,11 @@ import { isntLoggedIn } from "../login/userCredentials";
 import LoginFormContainer from "../login/LoginFormContainer";
 import Authenticated from "./Authenticated";
 
-const mapStateToProps = {
+const mapSelectorToProps = {
   isntLoggedIn
 };
 
 export default compose(
-  connectSelectors("AuthenticatedContainer", mapStateToProps, null),
+  connectSelectors("AuthenticatedContainer", mapSelectorToProps, null),
   branch(path(["isntLoggedIn"]), renderComponent(LoginFormContainer))
 )(Authenticated);

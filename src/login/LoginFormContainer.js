@@ -6,12 +6,12 @@ import { rfPromisifyOnSubmits } from "../util/reduxForm";
 import LoginForm from "./LoginForm";
 import { isLoggedIn, login } from "./userCredentials";
 
-const mapStateToProps = {
+const mapSelectorToProps = {
   isLoggedIn
 };
 const mapDispatchToProps = rfPromisifyOnSubmits({ onSubmit: login });
 
 export default compose(
-  connectSelectors("LoginFormContainer", mapStateToProps, mapDispatchToProps),
+  connectSelectors("LoginFormContainer", mapSelectorToProps, mapDispatchToProps),
   redirectHomeIf(path(["isLoggedIn"]))
 )(LoginForm);
