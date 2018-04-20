@@ -7,7 +7,7 @@ it("renders correctly", () => {
   const tree = renderer
     .create(
       <Provizanto>
-        <LoginForm onSubmit={() => {}}>Facebook</LoginForm>
+        <LoginForm onSubmit={() => {}} />
       </Provizanto>
     )
     .toJSON();
