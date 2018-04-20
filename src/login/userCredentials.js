@@ -18,6 +18,7 @@ export const isLoggedIn = createSelector(userCredentialsSelector, Boolean);
 export const isntLoggedIn = createSelector(userCredentialsSelector, not);
 
 export const login = rfCreateAction(LOGIN);
+export const logout = rfCreateAction(LOGOUT);
 const set = createAction(SET);
 const reset = createAction(RESET);
 
