@@ -12,6 +12,10 @@ const mapSelectorToProps = {
 const mapDispatchToProps = rfPromisifyOnSubmits({ onSubmit: login });
 
 export default compose(
-  connectSelectors("LoginFormContainer", mapSelectorToProps, mapDispatchToProps),
+  connectSelectors(
+    "LoginFormContainer",
+    mapSelectorToProps,
+    mapDispatchToProps
+  ),
   redirectHomeIf(path(["isLoggedIn"]))
 )(LoginForm);

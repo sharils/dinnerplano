@@ -11,7 +11,10 @@ const mapStateToProps = createStructuredSelector({
 
 export default compose(
   setDisplayName("LoginFormContainer"),
-  connect(mapStateToProps, null),
+  connect(
+    mapStateToProps,
+    null
+  ),
   branch(
     path(["isLoggedIn"]),
     withProps({ to: "/home" }),

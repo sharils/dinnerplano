@@ -8,5 +8,8 @@ const mapDispatchToProps = rfPromisifyOnSubmits({ onSubmit: logout });
 
 export default compose(
   setDisplayName("LogoutFormContainer"),
-  connect(null, mapDispatchToProps)
+  connect(
+    null,
+    mapDispatchToProps
+  )
 )(LogoutForm);

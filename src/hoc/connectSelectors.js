@@ -5,5 +5,8 @@ import { createStructuredSelector } from "reselect";
 export default (displayName, mapStateToProps, ...rest) =>
   compose(
     setDisplayName(displayName),
-    connect(createStructuredSelector(mapStateToProps), ...rest)
+    connect(
+      createStructuredSelector(mapStateToProps),
+      ...rest
+    )
   );
