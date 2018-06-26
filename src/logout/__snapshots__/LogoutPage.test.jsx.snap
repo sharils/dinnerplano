@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  "You have successfully logged out. ",
+  <a
+    href="/login"
+    onClick={[Function]}
+>
+    Login again
+</a>,
+]
+`;
