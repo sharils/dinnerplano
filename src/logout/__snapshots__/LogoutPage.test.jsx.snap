@@ -6,8 +6,8 @@ Array [
   <a
     href="/login"
     onClick={[Function]}
->
+  >
     Login again
-</a>,
+  </a>,
 ]
 `;

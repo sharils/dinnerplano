@@ -3,21 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^5.0.4",
+    "firebase": "^5.5.6",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-redux": "^5.0.7",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-redux": "^5.1.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
-    "recompose": "^0.27.1",
-    "redux": "^4.0.0",
-    "redux-actions": "^2.4.0",
+    "react-scripts": "2.0.5",
+    "recompose": "^0.30.0",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.3",
     "redux-devtools-extension": "^2.13.2",
     "redux-form": "^7.3.0",
-    "redux-saga": "^0.16.0",
-    "reselect": "^3.0.1"
+    "redux-saga": "^0.16.2",
+    "reselect": "^4.0.0"
   },
   "scripts": {
     "start": "BROWSER=none REACT_APP_COMMIT_HASH=\"$(npm run -s commit-hash)\" react-scripts start",
@@ -30,16 +30,22 @@
     "deploy": "npm run build && firebase deploy"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "^7.9.1",
-    "firebase-tools": "^3.18.6",
-    "prettier": "^1.13.4",
-    "react-test-renderer": "^16.4.0",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "firebase-tools": "^6.0.0",
+    "prettier": "^1.14.3",
+    "react-test-renderer": "^16.6.0",
     "redux-mock-store": "^1.5.1"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
